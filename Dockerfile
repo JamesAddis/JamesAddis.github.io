@@ -9,27 +9,25 @@
 ARG APP_VERSION="0.1.0"
 # node.js version 
 ARG NODEJS_VERSION="16.5.0-alpine"
-# jeykll version
-ARG JEKYLL_VERSION="4.2.0"
+# ruby version
+ARG RUBY_VERSION="3.0.2-alpine"
 
 
-# Use Jekyll and ruby to create a static website from the markdown and CSS
-FROM "jekyll/jekyll:${JEKYLL_VERSION}" as builder
+# Use ruby to create a static website from the markdown and CSS
+FROM "ruby:${RUBY_VERSION}" as builder
 
-WORKDIR /srv/jekyll
+# throw errors if Gemfile has been modified since Gemfile.lock
+RUN bundle config --global frozen 1
 
-COPY ./Gemfile /srv/jekyll/
+WORKDIR /usr/src/app
 
+COPY ./Gemfile /usr/src/app
 RUN bundle install
 
 # copy over binary (should have permissions set from build stage)
-COPY ./ /srv/jekyll/
+COPY ./ /usr/src/app
 
-RUN chown -R jekyll:jekyll /srv/jekyll/**/*
-
-RUN jekyll build
-
-USER jekyll
+RUN bundle exec jekyll build
 
 # metadata
 LABEL maintainer="jamesaaddis@gmail.com"

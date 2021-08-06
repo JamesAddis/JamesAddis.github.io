@@ -10,5 +10,3 @@ docker-compose.yml
 .sass-cache/
 artifacts/
 _site/
-
-Gemfile.lock

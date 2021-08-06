@@ -3,4 +3,3 @@ _data/secret.yml
 .jekyll-metadata
 output/
 artifacts/
-Gemfile.lock
