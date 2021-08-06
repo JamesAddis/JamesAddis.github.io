@@ -1,0 +1,19 @@
+.certificates {
+  margin-bottom: 20px;
+  .title {
+      @include sub-header;
+  }
+  .certificate-item {
+      margin-bottom: 20px;
+      .cert {
+          @include body-text;
+          font-weight: bold;
+      }
+      .body {
+          @include body-text;
+      }
+      .time {
+          @include body-text;
+      }
+  }
+}

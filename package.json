@@ -1,0 +1,25 @@
+{
+  "name": "jekyll-cv",
+  "version": "1.0.0",
+  "description": "Free theme for the creation of your CV. View demo [here](https://jekyll-cv.stavrospanakakis.com/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesAddis/jekyll-cv.git"
+  },
+  "keywords": [
+    "CV",
+    "Jekyll",
+    "Ruby",
+    "Javascript"
+  ],
+  "author": "James Addis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JamesAddis/jekyll-cv/issues"
+  },
+  "homepage": "https://github.com/JamesAddis/jekyll-cv#readme"
+}

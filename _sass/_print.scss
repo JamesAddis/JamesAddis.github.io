@@ -18,4 +18,9 @@
             }
         }
     }
+    .experience-item:nth-of-type(3) {
+      @media print {
+        page-break-after: always;
+      }
+    }
 }

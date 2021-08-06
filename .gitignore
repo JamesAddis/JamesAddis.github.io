@@ -1,3 +1,6 @@
-_site
+_data/secret.yml
 .sass-cache
 .jekyll-metadata
+output/
+artifacts/
+Gemfile.lock

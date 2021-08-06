@@ -1,0 +1,14 @@
+.github/
+.gitignore
+
+.dockerignore
+Dockerfile
+docker-compose.actions.yml
+docker-compose.yml
+.env
+
+.sass-cache/
+artifacts/
+_site/
+
+Gemfile.lock

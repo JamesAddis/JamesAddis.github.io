@@ -1,0 +1,37 @@
+name: lint
+
+on:
+  push:
+    branches:
+      - github-pages/*
+jobs:
+  lint:
+    name: Build Files
+    runs-on: ubuntu-latest
+    steps:
+      # get source files
+      - name: Checkout files
+        uses: actions/checkout@v2
+
+      # lint _config.yml and data file
+      - name: build files
+        run: >
+          docker-compose run --rm build-files
+      - name: Archive _site and _config.yml
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.85.0'
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          enable_jekyll: true
+
+    timeout-minutes: 20

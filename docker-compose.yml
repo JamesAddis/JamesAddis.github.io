@@ -1,0 +1,182 @@
+version: "3.8"
+services:
+  app:
+    image: ${IMAGE_REPO_NAME}:${APP_VERSION}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        JEKYLL_VERSION: "${JEKYLL_VERSION}"
+        APP_VERSION: "${APP_VERSION}"
+    command: jekyll serve --host 0.0.0.0
+    ports:
+      - 4000:4000
+  # Web Application Firewall for app, to use with security scan
+  waf-server:
+    image: owasp/modsecurity:${MODSECURITY_VERSION}
+    depends_on:
+      - app
+    environment:
+      PROXY_SSL: "on"
+      BACKEND: http://app:4000
+    ports:
+      - 4001:80
+
+  # lint dockerfile
+  lint-dockerfile:
+    image: ghcr.io/hadolint/hadolint:${HADOLINT_VERSION}
+    volumes:
+      - ./Dockerfile:/src/Dockerfile:ro
+      - ./artifacts:/artifacts
+    command:
+      - >
+        cat /src/Dockerfile | hadolint - 2>1 | tee /artifacts/lint-dockerfile-result.txt
+
+  # lint _config.yml, github work flows, docker-compose files and _data files
+  lint-yaml:
+    image: node:${NODEJS_VERSION}
+    volumes:
+      - ./_sass:/src/_sass:ro
+      - ./assets/css:/src/assets/css:ro
+      - ./artifacts:/artifacts
+    command:
+      - >
+        cd /src
+        && npm i yamlint --save-dev
+        && npx yamlint
+  # lint sass files
+  lint-sass:
+    image: node:${NODEJS_VERSION}
+    volumes:
+      - ./_sass:/src/_sass:ro
+      - ./assets/css:/src/assets/css:ro
+      - ./artifacts:/artifacts
+    command:
+      - >
+        cd /src
+        && npm i stylelint stylelint-scss --save-dev
+        && npx stylelint "**/*.scss"
+  # lint sass files
+  lint-js:
+    image: node:${NODEJS_VERSION}
+    volumes:
+      - ./assets/css:/src/assets/css:ro
+      - ./artifacts:/artifacts
+    command:
+      - >
+        cd /src
+        && npm i eslint --save-dev
+        && npx eslint --init
+
+  # scan docker image for vulernabilities
+  trivy-scan-dockerfile:
+    image: aquasec/trivy:${TRIVY_VERSION}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/src/:ro
+      - ./artifacts:/artifacts
+    entrypoint:
+      - /bin/sh
+      - -c
+    command:
+      - trivy conf /src/ | tee  /artifacts/trivy-dockerfile-result.txt
+  # save docker image to tar file
+  docker-save-image:
+    image: docker:dind
+    volumes:
+      - /var/lib/docker:/var/lib/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/src:ro
+      - ./artifacts:/artifacts
+    entrypoint:
+      - /bin/sh
+      - -c
+    command:
+      - >
+        cd /src
+        && docker save -o /artifacts/image.tar ${IMAGE_REPO_NAME}:${APP_VERSION} 
+  # scan docker image for vulernabilities
+  trivy-scan-image:
+    depends_on: 
+    - docker-save-image
+    image: aquasec/trivy:${TRIVY_VERSION}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./artifacts:/src:ro
+      - ./artifacts:/artifacts
+    entrypoint:
+      - /bin/sh
+      - -c
+    command:
+      - >
+        trivy image 
+        -f template 
+        --template "@contrib/html.tpl" 
+        -i /src/image.tar 
+        -o /artifacts/trivy-image-result.html
+
+  # owasp zap baseline scan
+  zap-baseline-scan:
+    image: owasp/zap2docker-stable:${OWASP_ZAP_VERSION}
+    depends_on:
+      - app
+      - waf-server
+    volumes:
+      - ./artifacts:/artifacts
+    command:
+      - >
+        zap-baseline.py 
+          -t https://waf-server 
+          -J /artifacts/owasp-baseline.json 
+          -w /artifacts/owasp-baseline.md
+
+  # owasp zap full scan
+  zap-full-scan:
+    image: owasp/zap2docker-stable:${OWASP_ZAP_VERSION}
+    depends_on:
+      - app
+      - waf-server
+    volumes:
+      - ./artifacts:/artifacts
+    command:
+      - >
+        zap-full-scan.py 
+          -t https://waf-server
+          -J /artifacts/owasp-full.json 
+          -w /artifacts/owasp-full.md
+
+  # server running a html to pdf app
+  jekyll-pdfy:
+    image: caffeina/pdfy:${PDFY_VERSION}
+    restart: always
+    volumes:
+      - ./artifacts:/storage
+
+  # instance which trigger request to convert resume html to PDF
+  print-pdf:
+    depends_on:
+      - app
+      - jekyll-pdfy
+    volumes:
+      - ./artifacts:/artifacts
+    image: busybox:${BUSYBOX_VERSION}
+    command:
+      - >
+        cd /artifacts
+        && curl -X POST
+        -d "urls=http://app
+        &name=resume
+        &orientation=portrait
+        &paper=10cmX15.5cm
+        &fit=A4" 
+        http://pdfy/
+
+  build-files:
+    image: jekyll/builder:${JEKYLL_VERSION}
+    volumes:
+      - ./:/srv/jekyll
+    entrypoint:
+      - /bin/sh
+      - -c
+    command:
+      - jekyll build

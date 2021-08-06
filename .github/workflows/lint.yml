@@ -1,0 +1,47 @@
+name: lint
+
+on:
+  push:
+    branches:
+      - master/*
+jobs:
+  lint:
+    name: Lint Files
+    runs-on: ubuntu-latest
+    steps:
+      # get source files
+      - name: Checkout files
+        uses: actions/checkout@v2
+
+      # make output directory
+      - name: Make artifacts directory
+        run: mkdir /artifacts
+
+      # lint _config.yml and data file
+      - name: Lint YAML
+        run: >
+          docker-compose run -f docker-compose.actions.yml --rm lint-yml
+
+      # lint sass
+      - name: Lint SASS
+        run: >
+          docker-compose run -f docker-compose.actions.yml --rm lint-sass
+    
+      # lint javascript
+      - name: Lint Javascript
+        run: >
+          docker-compose run -f docker-compose.actions.yml --rm lint-js
+
+      # lint dockerfile
+      - name: Lint Dockerfile
+        run: >
+          docker-compose run -f docker-compose.actions.yml --rm lint-dockerfile
+
+      # save artifacts
+      - name: Save docker image
+        uses: actions/upload-artifact@v2
+        with:
+          name: image.tar
+          path: /artifacts/*
+
+    timeout-minutes: 20

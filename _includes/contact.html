@@ -1,59 +1,95 @@
-{% assign contact = site.data.data.contact %}
-{% if contact %}
+{% assign contactSecret = site.data.secret.contact %} {% assign contact =
+site.data.data.contact %} {% if contact %}
 <section class="contact">
-    <div class="title">Contact</div>
-    {% if contact.email %}
-        <div class="contact-item">
-            <i data-feather="mail"></i>
-            <a href="#">
-                {{contact.email}}
-            </a>
-        </div>
-    {% endif %}
-
-    {% if contact.phone %}
-        <div class="contact-item">
-            <i data-feather="phone"></i>
-            <a href="#">
-                {{contact.phone}}
-            </a>
-        </div>
-    {% endif %}
-
-    {% if contact.github %}
-        <div class="contact-item">
-            <i data-feather="github"></i>
-            <a href="https://github.com/{{contact.github}}">
-                {{contact.github}}
-            </a>
-        </div>
-    {% endif %}
-
-    {% if contact.linkedin %}
-        <div class="contact-item">
-            <i data-feather="linkedin"></i>
-            <a href="https://linkedin.com/in/{{contact.linkedin}}">
-                {{contact.linkedin}}
-            </a>
-        </div>
-    {% endif %}
-
-    {% if contact.twitter %}
-        <div class="contact-item">
-            <i data-feather="twitter"></i>
-            <a href="https://twitter.com/{{contact.twitter}}">
-                {{contact.twitter}}
-            </a>
-        </div>
-    {% endif %}
-
-    {% if contact.gitlab %}
-        <div class="contact-item">
-            <i data-feather="gitlab"></i>
-            <a href="https://gitlab.com/{{contact.gitlab}}">
-                {{contact.gitlab}}
-            </a>
-        </div>
-    {% endif %}
+  <div class="title">Contact</div>
+  {% if contact.email %}
+  <div class="contact-item">
+    <i data-feather="mail"></i>
+    <a href="mailto:{{contact.email}}"> {{contact.email}} </a>
+  </div>
+  {% elsif contactSecret.email %}
+  <div class="contact-item">
+    <i data-feather="mail"></i>
+    <a href="mailto:{{contactSecret.email}}"> {{contactSecret.email}} </a>
+  </div>
+  {% endif %} {% if contact.phone %}
+  <div class="contact-item">
+    <i data-feather="phone"></i>
+    <a
+      href="tel:{{contact.phone | slice: 1, (contact.phone.size - 1) | prepend: '+44' }}"
+    >
+      {{contact.phone}}
+    </a>
+  </div>
+  {% elsif contactSecret.phone %}
+  <div class="contact-item">
+    <i data-feather="phone"></i>
+    <a
+      href="tel:{{contactSecret.phone | slice: 1, (contactSecret.phone.size - 1) | prepend: '+44' }}"
+    >
+      {{contactSecret.phone}}
+    </a>
+  </div>
+  {% endif %} {% if contact.github %}
+  <div class="contact-item">
+    <i data-feather="github"></i>
+    <a href="https://github.com/{{contact.github}}"> {{contact.github}} </a>
+  </div>
+  {% endif %} {% if contact.linkedin %}
+  <div class="contact-item">
+    <i data-feather="linkedin"></i>
+    <a href="https://linkedin.com/in/{{contact.linkedin}}">
+      {{contact.linkedin}}
+    </a>
+  </div>
+  {% endif %} {% if contact.twitter %}
+  <div class="contact-item">
+    <i data-feather="twitter"></i>
+    <a href="https://twitter.com/{{contact.twitter}}"> {{contact.twitter}} </a>
+  </div>
+  {% endif %} {% if contact.gitlab %}
+  <div class="contact-item">
+    <i data-feather="gitlab"></i>
+    <a href="https://gitlab.com/{{contact.gitlab}}"> {{contact.gitlab}} </a>
+  </div>
+  {% endif %} {% assign postAddress=contact.address %} {% if postAddress %}
+  <div class="contact-item">
+    <i data-feather="address"></i>
+    <address>
+      {% if postalAddress.line1 %}
+      <span id="address-line1">{{ postalAddress.line1 }}</span>
+      {% endif %} {% if postalAddress.line2 %}
+      <span id="address-line2">{{ postalAddress.line2 }}</span>
+      {% endif %} {% if postalAddress.line3 %}
+      <span id="address-line3">{{ postalAddress.line3 }}</span>
+      {% endif %} {% if postalAddress.city %}
+      <span id="address-city">{{ postalAddress.city }}</span>
+      {% endif %} {% if postalAddress.county %}
+      <span id="address-county">{{ postalAddress.county }}</span>
+      {% endif %} {% if postalAddress.postCode %}
+      <span id="address-post-code">{{ postalAddress.postCode }}</span>
+      {% endif %}
+    </address>
+  </div>
+  {% elsif contactSecret.address %}
+  <div class="contact-item">
+    <i data-feather="address"></i>
+    <address>
+      {% if postalAddress.line1 %}
+      <span id="address-line1">{{ contactSecret.address.line1 }}</span>
+      {% endif %} {% if contactSecret.address.line2 %}
+      <span id="address-line2">{{ contactSecret.address.line2 }}</span>
+      {% endif %} {% if contactSecret.address.line3 %}
+      <span id="address-line3">{{ contactSecret.address.line3 }}</span>
+      {% endif %} {% if contactSecret.address.city %}
+      <span id="address-city">{{ postalAddress.city }}</span>
+      {% endif %} {% if contactSecret.address.county %}
+      <span id="address-county">{{ postalAddress.county }}</span>
+      {% endif %} {% if contactSecret.address.postCode %}
+      <span id="address-post-code">{{ contactSecret.address.postCode }}</span>
+      {% endif %}
+    </address>
+  </div>
+  {% endif %}
 </section>
 {% endif %}

@@ -1,14 +1,21 @@
 <head>
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{'/assets/css/main.css' | absolute_url}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <!-- Meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <base href="{{site.url}}{{site.baseurl}}"/>
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{'assets/css/main.css' }}" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-    
-    <title>{{site.title}}</title>
+  <!-- Meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  {% assign csp=site.data.data.csp %}
+  {% if csp %}
+  <meta http-equiv="Content-Security-Policy" content="{{site.data.data.csp}}" />
+  {% endif %}
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <title>{{site.title}}</title>
 </head>

@@ -9,7 +9,12 @@
                     {{p.title}}
                 </a>
             </span>
-            <span class="details">- {{p.details}}</span>
+            <div class="details">{{p.details}}</div>
+            <ul class="details">
+              {% for item in p.list %}
+              <li>{{item}}</li>
+              {% endfor %}
+            </ul>
         </div>
     {% endfor %}
 </section>
