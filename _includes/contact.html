@@ -54,7 +54,7 @@ site.data.data.contact %} {% if contact %}
   </div>
   {% endif %} {% assign postAddress=contact.address %} {% if postAddress %}
   <div class="contact-item">
-    <i data-feather="address"></i>
+    <i data-feather="map-pin"></i>
     <address>
       {% if postalAddress.line1 %}
       <span id="address-line1">{{ postalAddress.line1 }}</span>
@@ -73,9 +73,9 @@ site.data.data.contact %} {% if contact %}
   </div>
   {% elsif contactSecret.address %}
   <div class="contact-item">
-    <i data-feather="address"></i>
+    <i data-feather="map-pin"></i>
     <address>
-      {% if postalAddress.line1 %}
+      {% if contactSecret.line1 %}
       <span id="address-line1">{{ contactSecret.address.line1 }}</span>
       {% endif %} {% if contactSecret.address.line2 %}
       <span id="address-line2">{{ contactSecret.address.line2 }}</span>
