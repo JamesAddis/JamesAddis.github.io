@@ -2,7 +2,7 @@ title: CV | James Addis
 description: A beautiful template for your CV.
 destination: ./public
 theme_skin: blue
-
+repository: JamesAddis/JamesAddis.github.io
 sass:
   sass_dir: _sass
   style: compressed
