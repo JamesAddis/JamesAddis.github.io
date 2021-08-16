@@ -11,6 +11,13 @@ services:
     command: jekyll serve --host 0.0.0.0
     ports:
       - 4000:4000
+  serve-app:
+    image: jekyll/jekyll:${JEKYLL_VERSION}
+    volumes:
+      - ./:/srv/jekyll
+    command: jekyll serve --host 0.0.0.0
+    ports:
+      - 4002:4000
   # Web Application Firewall for app, to use with security scan
   waf-server:
     image: owasp/modsecurity:${MODSECURITY_VERSION}

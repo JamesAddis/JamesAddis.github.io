@@ -20,9 +20,9 @@
     })(win.localStorage);
   });
   // keep dark mode preference
-  (function (local) {
-    checkbox.checked = local.getItem("darkMode");
-    checkbox.dispatchEvent(new Event("change"));
-  })(win.localStorage);
+  // (function (local) {
+  //   checkbox.checked = local.getItem("darkMode");
+  //   checkbox.dispatchEvent(new Event("change"));
+  // })(win.localStorage);
 })(document, window);
 

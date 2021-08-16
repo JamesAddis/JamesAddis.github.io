@@ -1,0 +1,41 @@
+{% assign postalAddress=site.data.data.contact.address %} 
+{% assign contactSecretAddress =site.data.secret.contact.address %}
+{% if postalAddress %}
+<div class="contact-address">
+<!-- <i data-feather="map-pin"></i> -->
+  <address class="contact-item">
+    {% if postalAddress.line1 %}
+    <span id="address-line1">{{ postalAddress.line1 }}</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if postalAddress.line2 %}
+    <span id="address-line2">{{ postalAddress.line2 }}</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if postalAddress.line3 %}
+    <span id="address-line3">{{ postalAddress.line3 }}</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if postalAddress.city %}
+    <span id="address-city">{{ postalAddress.city }}</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if postalAddress.county %}
+    <span id="address-county">{{ postalAddress.county }}</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if postalAddress.postCode %}
+    <span id="address-post-code">{{ postalAddress.postCode }}</span>
+    {% endif %}
+  </address>
+</div>
+{% elsif contactSecretAddress %}
+<div class="contact-address">
+  <!-- <i data-feather="map-pin"></i> -->
+  <address class="contact-item">
+    {% if contactSecretAddress.line1 %}
+    <span id="address-line1">{{ contactSecretAddress.line1 }},</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if contactSecretAddress.line2 %}
+    <span id="address-line2">{{ contactSecretAddress.line2 }},</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if contactSecretAddress.line3 %}
+    <span id="address-line3">{{ contactSecretAddress.line3 }},</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if contactSecretAddress.city %}
+    <span id="address-city">{{ contactSecretAddress.city }},</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if contactSecretAddress.county %}
+    <span id="address-county">{{ contactSecretAddress.county }},</span><span class="separator">,&nbsp;</span>
+    {% endif %} {% if contactSecretAddress.postCode %}
+    <span id="address-post-code">{{ contactSecretAddress.postCode }}</span>
+    {% endif %}
+  </address>
+</div>
+{% endif %}

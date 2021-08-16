@@ -1,0 +1,22 @@
+.contact-address {
+    .contact-item {
+        @include body-text;
+      display: flex;
+      align-items: right;
+      address {
+        display: flex;
+        align-items: row;
+        justify-content: space-between;
+        text-decoration: none;
+        padding-top: 4px;
+        padding-left: 4px;
+        padding-right: 4px;
+        color: var(--fg-color);
+        span{
+            margin-inline-start: 4px;
+            white-space: nowrap;
+        }
+        // @include body-text;
+      }
+    }
+  }
