@@ -27,12 +27,12 @@ education:
   - degree: Computer Science with AI (BSc)
     university: York University
 certifications:
-  - name: Certified Kubernetes Admin
+  - name: Certified Kubernetes Admin 
     body: CNCF
-    time: 2021
+    time: 2021 (expired renewing in July).
   - name: GCP Associate Cloud Engineer
     body: Google
-    time: 2020
+    time: 2020 (expired)
   # - name: AWS DevOps Engineer
 
 skills:
