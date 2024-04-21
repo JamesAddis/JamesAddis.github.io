@@ -44,11 +44,11 @@ skills:
       - Python
   - category: Backend
     skill:
-      - ASP NET Core (1-6)
+      - ASP NET Core (1-8) + MVC (3-5)
       - Node.js
       - Linux
-      - AWS Lambda/Azure Functions
-      - ASP NET MVC (3-5)
+      - Azure Functions
+      - DAPR
   - category: Frontend
     skill:
       - Angular (2+)
@@ -64,7 +64,7 @@ skills:
     skill:
       - Docker
       - Kubernetes
-      - Terraform
+      - Terraform/Bicep
       - CI/CD
   - category: DevSecOps
     skill:
