@@ -101,8 +101,7 @@ experience:
       - Onboarding new team members + creating cloud resources (Dev VM, databases, storage accounts) for them
     technologies_used: |
       Azure, K8s, C#, Dapr, GraphQL, CI/CD, Bicep, Linux, Actor Model, NetCDF, BDD, Agile
-  - role: Career Break - Professional development
-    time: May 2022 - Nov 2022
+
   - role: Contract Developer
     time: September 2021 - April 2022
     company: Arden & GEM CSU
