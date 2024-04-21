@@ -239,7 +239,7 @@ projects:
       - Custom registration and approval for new users
       - Azure Api Management to integrate with other Azure hosted REST API services, and secure internal access to specified apps
       - OpenAPI and Swashbuckle to generate developer documentation for the app
-      - Managed Identity to authenticate web app to database, object storage, and other services
+      - Managed Identity to authenticate web app to Azure services
       - Okta for OpenID Connect (OIDC) external Client Authentication
       - Docker for integration tests with Azurite (emulated blob and queue storage), Keycloak (OIDC) and MSSQL for T-SQL
   - title: Oracle Cloud Platform integration and ETL
