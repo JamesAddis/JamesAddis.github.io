@@ -18,7 +18,7 @@ contact:
   github: JamesAddis
   linkedin: jamesarthuraddis
   address:
-    line1: Address Cloud Technologies Ltd.
+    line1: Addis Cloud Technologies Ltd.
     line2: 71-75 Shelton Street
     city: London
     postCode: WC2H 9JQ
@@ -33,6 +33,7 @@ certifications:
   - name: GCP Associate Cloud Engineer
     body: Google
     time: 2020
+  # - name: AWS DevOps Engineer
 
 skills:
   - category: Programming Languages
@@ -43,7 +44,7 @@ skills:
       - Python
   - category: Backend
     skill:
-      - ASP NET Core (1-3.1)
+      - ASP NET Core (1-6)
       - Node.js
       - Linux
       - AWS Lambda/Azure Functions
@@ -63,8 +64,8 @@ skills:
     skill:
       - Docker
       - Kubernetes
-      - Ansible
-      - Cloud-init
+      - Terraform
+      - CI/CD
   - category: DevSecOps
     skill:
       - Seccomp/AppArmor
@@ -74,23 +75,65 @@ skills:
 
 # Profile
 profile: |
-  Full Stack software developer with 7+ years experience, specialising in C#, Typescript, and Container (Docker, K8s).
+  Full Stack software developer with 10+ years experience, specialising in C#, Typescript, and Container (Docker, K8s).
   I am a passionate coder with an eye for reliant, fault-tolerant, and secure applications.
   I am always looking to improve my skills and knowledge set.
 
 # Experience
 experience:
-  - role: Director
-    time: July 2021-Present
-    company: Addis Cloud Technologies Ltd
+  - role: Kubernetes Contract Developer
+    time: Dec 2022 - July 2024
+    company: Cognizant/Microsoft/Met Office
     details: |
-      Created a Company, got fully vaccinated and ready to work!
-      Currently studying for AWS certifications (Solutions Architect or Developer) and a CKS (Certified Kubernetes Security Specialist).
+      Contracted by Cognizant, then provided to Microsoft, to work on a project being developed for the Met office. 
+      Here I worked with multiple teams in an Agile environment, providing my Development/Cloud/DevOps skills.
+      Mainly developing .NET/Kuberenetes applications to work with NetCDF files.
+      Hybrid working, onsite for sprint beginning/end with remote working between.
+      My duties included
+    list:
+      - Developing, and testing, backend software applications
+      - Containerizing applications and creating Kubernetes resources to said containers
+      - Developing CI/CD pipelines to automate build, test, and deployment
+      - Tech support to other teams for DevOps (Azure, Bicep, Entra Id, K8s, Docker, Dapr, CI/CD) issues
+      - Designing cloud replacements for on premise dependent software tools
+      - Sprint Planning, and Refinement of User Stories (with or without other team members)
+      - Helping architecture decisions + providing technical expertise (we had full time architect to support instead of doing it all ourselves)
+      - Onboarding new team members + creating cloud resources (Dev VM, databases, storage accounts) for them
     technologies_used: |
-      AWS, Lambda, CloudFormation, Falco, AppArmor, Trivy, K8s, OPA, PKI, CodeBuild
-
-  - role: Sabbatical
-    time: May 2019-July 2021
+      Azure, K8s, C#, Dapr, GraphQL, CI/CD, Bicep, Linux, Actor Model, NetCDF, BDD, Agile
+  - role: Career Break - Professional development
+    time: May 2022 - Nov 2022
+  - role: Contract Developer
+    time: September 2021 - April 2022
+    company: Arden & GEM CSU
+    details: |
+      Developed a Azure hosted web portal for different organisations, which intergrated multiple reports (Tableau or otherwise).
+    list:
+      - Ensuring web application backward compatibility with Internet Explorer
+      - Using Azure DevOps to plan tasks and track sprints using Agile Methodology
+      - Integrating Different Platforms (Tableau and Azure)
+      - Developing Unit and Integration Tests for applications
+      - Automating Build, Test and Publish steps using CI/CD
+      - Angular (11 due to IE) Frontend
+      - Angular Bootstrap to integrate Bootstrap css/sass and js with Angular app
+      - ASP NET CORE (3-5) to implement Backend
+      - Tableau JS Library to integrate Tableau Server reports into Angular app
+      - Azure Pipelines for CI/CD
+      - XUnit, Autofixture and Moq to create Unit and Integration tests
+      - Azure DevOps for Source Control and Agile sprint/task boards
+      - Azure App Engine for PaaS to host Web App
+      - AzureSQL to host Database
+      - Azure Blob storage for object storage
+      - ClamAV for scanning for malware on files uploaded to server
+      - Azure Api Management to integrate with REST API services and give developer documentation for the app
+      - Managed Identity to authenticate web app to database, object storage, and other services
+      - Okta for OpenID Connect Client Authentication
+      - Docker for integration tests with Azurite (emulated blob and queue storage), and containerized MSSQL for SQL database
+    technologies_used: |
+      Azure, Tableau, CI/CD, C#, Typescript, ASP NET CORE (3-5), Azure DevOps, Agile, Okta, ClamAV, Automated Testing
+  
+  - role: Career Break
+    time: May 2019 - August 2021
     company: "Freelance"
     details: |
       Took a year off, then the Pandemic hit, so I extended it until I got fully vaccinated, and due to my finances, I did not need to work.
@@ -149,6 +192,60 @@ experience:
       ASP NET MVC (3-5), ASP NET Web API, ASP NET Forms, C#, Javascript, jQuery, Knockout, VB.Net, SharePoint, T-SQL, MSSQL
 
 projects:
+  - title: Met Office Azure Migration
+    link: https://news.microsoft.com/en-gb/2021/04/22/met-office-and-microsoft-join-forces-to-build-worlds-most-powerful-weather-and-climate-forecasting-supercomputer-in-uk/
+    details: |
+      During my time at Microsoft, I worked with multiple teams involved in the Met Office upgrading their software tools to run in the cloud.
+      This included working with workflows involving NetCDF files and Petabytes of scientific data.
+    list:
+      - C# (.NET 6-8) for software
+      - Asp Net Core (6-8) with Hot Chocolate (GraphQL) for flexible REST Apis
+      - MSTest for Unit Testing (and some integration tests)
+      - Specflow for BDD and E2E testing
+      - Backend services hosted as Microservices in K8s to allow for efficient scaling and reliability
+      - Helm for K8s deployment
+      - Docker to containerize microservices
+      - Azure DevOps Pipelines (YAML) for CI/CD
+      - Powershell + Azure CLI for scripting
+      - Bicep for provisioning
+      - Microsoft SQL Server (T-SQl & EntityFramework Core) + CosmosDb (NoSql) for database Services
+      - Redis for cache
+      - Azure Blob Storage for object storage
+      - Azure File Storage for file storage (with CSI Drivers for K8s volumes)
+      - Azure Key Vault for Secrets, Certificates and Key Management (with Dapr components + CSI drivers for k8s integration)
+      - Azure Service Bus for queues/topics to provide asynchronous communication and decouple services
+      - Entra Id for IAM and OpenId Connect (Workload+Pod Identity for K8s integration)
+      - Dapr Actors for orchestrating reliable workflows
+      - Support other team members working on frontend applications with Blazor
+      - Ubuntu + bash + Docker/Podman for Linux testing
+      - Minikube/KinD and Docker/Podman Desktop for local development
+  - title: Athena Portal and ReIdent
+    link: #
+    details: |
+      During my time at the Arden & GEM CSU, I took the responsibility to architect and develop Athena.
+      Athena was a web portal which integrated multiple reports (mostly Tableau reports), and reduced data given to said reports to be only relevant customer.
+      I also worked partially on ReIdent, which was a REST API which took Pseudonymised patient IDs and return the real details of said patients.
+      So authorised users (usually clinicians) could get contact information of patients who were flagged in reports.
+    list: 
+      - Angular (11) Frontend with backwards compatibility with Internet Explorer
+      - Angular Bootstrap to integrate Bootstrap css/sass and js with Angular app
+      - ASP NET CORE (3-5) to implement Backend
+      - Tableau JS Library to integrate Tableau Server reports into Angular app
+      - "Azure Pipelines for CI/CD, to automate: lint, build, test, publish, and deployment"
+      - XUnit, Autofixture and Moq to create Unit and Integration tests
+      - Azure DevOps for Source Control and Agile sprint/task tracking
+      - Azure App Service for PaaS to host Web App
+      - AzureSQL to host Database (MSSQL)
+      - Azure Blob storage for uploaded file Reports, CSVs and such
+      - ClamAV for scanning for malware on files uploaded to server
+      - ETL process for updating all customer organisation structures from CSVs
+      - Role and permission assignment based on Organisation and Job Type
+      - Custom registration and approval for new users
+      - Azure Api Management to integrate with other Azure hosted REST API services, and secure internal access to specified apps
+      - OpenAPI and Swashbuckle to generate developer documentation for the app
+      - Managed Identity to authenticate web app to database, object storage, and other services
+      - Okta for OpenID Connect (OIDC) external Client Authentication
+      - Docker for integration tests with Azurite (emulated blob and queue storage), Keycloak (OIDC) and MSSQL for T-SQL
   - title: Oracle Cloud Platform integration and ETL
     link: #
     details: |
