@@ -118,8 +118,7 @@ experience:
       - Tableau JS Library to integrate Tableau Server reports into Angular app
       - XUnit, Autofixture and Moq to create Unit and Integration tests
       - Azure App Engine for PaaS to host Web App
-      - AzureSQL to host Database
-      - Azure Blob storage for object storage
+      - AzureSQL to host Database + Azure Blob Storage for object storage
       - ClamAV for scanning for malware on files uploaded to server
       - Azure Api Management to integrate with REST API services and give developer documentation for the app
       - Managed Identity to authenticate web app to database, object storage, and other services
