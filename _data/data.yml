@@ -44,7 +44,7 @@ skills:
       - Python
   - category: Backend
     skill:
-      - ASP NET Core (1-8) + MVC (3-5)
+      - ASP NET Core (1-8)
       - Node.js
       - Linux
       - Azure Functions
