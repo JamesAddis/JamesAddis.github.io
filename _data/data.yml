@@ -86,10 +86,6 @@ experience:
     company: Cognizant/Microsoft/Met Office
     details: |
       Contracted by Cognizant, then provided to Microsoft, to work on a project being developed for the Met office. 
-      Here I worked with multiple teams in an Agile environment, providing my Development/Cloud/DevOps skills.
-      Mainly developing .NET/Kuberenetes applications to work with NetCDF files.
-      Hybrid working, onsite for sprint beginning/end with remote working between.
-      My duties included
     list:
       - Developing, and testing, backend software applications
       - Containerizing applications and creating Kubernetes resources to said containers
