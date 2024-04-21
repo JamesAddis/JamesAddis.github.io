@@ -110,17 +110,14 @@ experience:
       Developed a Azure hosted web portal for different organisations, which intergrated multiple reports (Tableau or otherwise).
     list:
       - Ensuring web application backward compatibility with Internet Explorer
-      - Using Azure DevOps to plan tasks and track sprints using Agile Methodology
+      - Using Azure DevOps for source control, plan tasks, and track sprints using Agile Methodology
       - Integrating Different Platforms (Tableau and Azure)
       - Developing Unit and Integration Tests for applications
-      - Automating Build, Test and Publish steps using CI/CD
-      - Angular (11 due to IE) Frontend
-      - Angular Bootstrap to integrate Bootstrap css/sass and js with Angular app
+      - Automating Build, Test and Publish steps using CI/CD (Azure Pipelines)
+      - Angular (11 due to IE) Frontend + Angular Bootstrap to integrate Bootstrap css/sass and js with Angular app
       - ASP NET CORE (3-5) to implement Backend
       - Tableau JS Library to integrate Tableau Server reports into Angular app
-      - Azure Pipelines for CI/CD
       - XUnit, Autofixture and Moq to create Unit and Integration tests
-      - Azure DevOps for Source Control and Agile sprint/task boards
       - Azure App Engine for PaaS to host Web App
       - AzureSQL to host Database
       - Azure Blob storage for object storage
